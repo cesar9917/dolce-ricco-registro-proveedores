@@ -1,0 +1,11 @@
+# Archivos compilados
+bin/
+*.class
+
+# Credenciales reales (solo subiremos el .example)
+db.properties
+
+# Archivos de configuración local de Eclipse
+.settings/
+.classpath
+.project

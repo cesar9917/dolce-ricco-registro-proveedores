@@ -1,9 +1,7 @@
--- Dolce & Ricco | Carga del script Insercion de Datos.sql con un evaluador.
--- Se conserva a la primera evaluadora del archivo adjunto como supuesto.
--- Ejecutar después de 01_esquema.sql a 04_procedimientos_reportes.sql.
--- Elimina las claves exactas de la carga demo anterior y conserva el historial.
--- Las filas existentes con las claves de la fuente conservan sus datos locales.
--- La reasignación de evaluadores abarca solo los DNI anteriores conocidos.
+-- Dolce & Ricco | Carga inicial de datos del proyecto.
+-- Ejecutar después de los scripts 01 al 04.
+-- Incluye registros documentados y datos de ejemplo.
+-- Las claves existentes conservan sus valores.
 
 USE registro_proveedores;
 
@@ -28,87 +26,6 @@ BEGIN
     INSERT INTO Evaluador (DNI, NomCompleto, Telefono) VALUES
     ('45678912', 'Isabel María Manchego Rodríguez', '987654321')
     ON DUPLICATE KEY UPDATE DNI = Evaluador.DNI;
-
-    DELETE FROM FichaTecnica WHERE Cod_Ficha IN (
-        'DEMO-FT-01', 'DEMO-FT-02', 'DEMO-FT-03', 'DEMO-FT-04', 'DEMO-FT-05', 'DEMO-FT-06',
-        'DEMO-FT-07', 'DEMO-FT-08', 'DEMO-FT-09', 'DEMO-FT-10', 'DEMO-FT-11');
-
-    DELETE FROM RegistroSanitario WHERE Num_Reg_San IN (
-        'DEMO-RS-01', 'DEMO-RS-02', 'DEMO-RS-03', 'DEMO-RS-04', 'DEMO-RS-05', 'DEMO-RS-06',
-        'DEMO-RS-07', 'DEMO-RS-08', 'DEMO-RS-09', 'DEMO-RS-10', 'DEMO-RS-11', 'DEMO-RS-12',
-        'DEMO-RS-13', 'DEMO-RS-14', 'DEMO-RS-15', 'DEMO-RS-16');
-
-    DELETE FROM Haccp WHERE CodHaccp IN (
-        'DEMO-H-01', 'DEMO-H-02', 'DEMO-H-03', 'DEMO-H-04', 'DEMO-H-05', 'DEMO-H-06',
-        'DEMO-H-07', 'DEMO-H-08', 'DEMO-H-09', 'DEMO-H-10', 'DEMO-H-11', 'DEMO-H-12');
-
-    DELETE FROM Cabecera_Haccp WHERE NumReso IN (
-        'DEMO-RES-01', 'DEMO-RES-02', 'DEMO-RES-03', 'DEMO-RES-04', 'DEMO-RES-05', 'DEMO-RES-06',
-        'DEMO-RES-07', 'DEMO-RES-08', 'DEMO-RES-09', 'DEMO-RES-10', 'DEMO-RES-11', 'DEMO-RES-12');
-
-    DELETE FROM Factura WHERE Numfac IN (
-        'F990-00000001', 'F990-00000002', 'F990-00000003', 'F990-00000004', 'F990-00000005', 'F990-00000006',
-        'F990-00000007', 'F990-00000008', 'F990-00000009', 'F990-00000010', 'F990-00000011', 'F990-00000012',
-        'F990-00000013', 'F990-00000014', 'F990-00000015', 'F990-00000016', 'F990-00000017', 'F990-00000018',
-        'F990-00000019', 'F990-00000020', 'F990-00000021', 'F990-00000022', 'F990-00000023', 'F990-00000024',
-        'F990-00000025', 'F990-00000026', 'F990-00000027', 'F990-00000028', 'F990-00000029', 'F990-00000030',
-        'F990-00000031', 'F990-00000032', 'F990-00000033', 'F990-00000034', 'F990-00000035', 'F990-00000036',
-        'F990-00000037', 'F990-00000038', 'F990-00000039', 'F990-00000040', 'F990-00000041', 'F990-00000042',
-        'F990-00000043', 'F990-00000044', 'F990-00000045', 'F990-00000046', 'F990-00000047', 'F990-00000048',
-        'F990-00000049', 'F990-00000050', 'F990-00000051', 'F990-00000052', 'F990-00000053', 'F990-00000054');
-
-    DELETE FROM Suministra WHERE (Ruc_Prov, Cod_Produ) IN (
-        ('90000000001', 'DEMO-P01'),
-        ('90000000002', 'DEMO-P02'),
-        ('90000000003', 'DEMO-P03'),
-        ('90000000004', 'DEMO-P04'),
-        ('90000000005', 'DEMO-P05'),
-        ('90000000006', 'DEMO-P06'),
-        ('90000000007', 'DEMO-P07'),
-        ('90000000008', 'DEMO-P08'),
-        ('90000000009', 'DEMO-P09'),
-        ('90000000010', 'DEMO-P10'),
-        ('90000000011', 'DEMO-P11'),
-        ('90000000012', 'DEMO-P12'),
-        ('90000000013', 'DEMO-P01'),
-        ('90000000014', 'DEMO-P02'),
-        ('90000000015', 'DEMO-P03'),
-        ('90000000016', 'DEMO-P04'),
-        ('90000000017', 'DEMO-P05'),
-        ('90000000018', 'DEMO-P06'),
-        ('90000000019', 'DEMO-P07'),
-        ('90000000020', 'DEMO-P08'),
-        ('90000000021', 'DEMO-P09'),
-        ('90000000022', 'DEMO-P10'),
-        ('90000000023', 'DEMO-P11'),
-        ('90000000024', 'DEMO-P12'),
-        ('90000000001', 'DEMO-P02'),
-        ('90000000002', 'DEMO-P03'),
-        ('90000000003', 'DEMO-P04'),
-        ('90000000004', 'DEMO-P05'),
-        ('90000000006', 'DEMO-P07'),
-        ('90000000008', 'DEMO-P09'),
-        ('90000000009', 'DEMO-P10'));
-
-    DELETE FROM Producto WHERE Cod_Produc IN (
-        'DEMO-P01', 'DEMO-P02', 'DEMO-P03', 'DEMO-P04', 'DEMO-P05', 'DEMO-P06',
-        'DEMO-P07', 'DEMO-P08', 'DEMO-P09', 'DEMO-P10', 'DEMO-P11', 'DEMO-P12');
-
-    DELETE FROM Proveedor WHERE RUC_Prov IN (
-        '90000000001', '90000000002', '90000000003', '90000000004', '90000000005', '90000000006',
-        '90000000007', '90000000008', '90000000009', '90000000010', '90000000011', '90000000012',
-        '90000000013', '90000000014', '90000000015', '90000000016', '90000000017', '90000000018',
-        '90000000019', '90000000020', '90000000021', '90000000022', '90000000023', '90000000024');
-
-    UPDATE Proveedor
-    SET DNI = '45678912'
-    WHERE DNI IN ('91900001', '91900002', '91900003', '91900004', '41236587');
-
-    DELETE FROM Evaluador WHERE DNI IN ('91900001', '91900002', '91900003', '91900004', '41236587');
-
-    DELETE FROM Telefono_Evaluador
-    WHERE Telefono IN ('900990001', '900990002', '900990003', '900990004', '956123478')
-      AND NOT EXISTS (SELECT 1 FROM Evaluador e WHERE e.Telefono = Telefono_Evaluador.Telefono);
 
     INSERT INTO Proveedor (RUC_Prov, RazonSocial, Direcc, Estado, Evaluacion, DNI) VALUES
     ('20517842517', 'ALIMENTOS CIELO S.A.C.',
@@ -247,6 +164,7 @@ END$$
 DELIMITER ;
 
 CALL sp_cargar_datos_proyecto();
+
 DROP PROCEDURE IF EXISTS sp_cargar_datos_proyecto;
 
 SELECT
